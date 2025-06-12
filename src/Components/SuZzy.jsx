@@ -9,7 +9,11 @@ const SuZzy = () => {
       let font = null;
 
       p.setup = () => {
-        p.createCanvas(Math.min(400, p.windowWidth * 0.9), 200).parent(
+        // Limpia el contenedor antes de crear el canvas
+        if (sketchRef.current) {
+          sketchRef.current.innerHTML = "";
+        }
+        p.createCanvas(Math.min(500, p.windowWidth * 0.9), 300).parent(
           sketchRef.current
         );
         p.textAlign(p.CENTER, p.CENTER);
@@ -26,7 +30,7 @@ const SuZzy = () => {
       };
 
       p.draw = () => {
-        p.background(0);
+        p.clear(); // Limpia el canvas con transparencia
         let emoColor =
           p.frameCount % 30 < 15 ? p.color(255, 0, 255) : p.color(255);
         p.fill(emoColor);
@@ -35,11 +39,13 @@ const SuZzy = () => {
           p.textFont(font);
         }
 
+        p.text("Te amo", p.width / 2, p.height / 6);
+
         p.text("SuZzy", p.width / 2, p.height / 2);
 
         // Emo decoraciones
-        p.textSize(20);
-        p.text("x_x", p.width / 2 - 120, p.height / 2 - 40);
+        p.textSize(30);
+        p.text("x_x", p.width / 2.5 - 120, p.height / 2 - 40);
         p.text("♥", p.width / 2 + 100, p.height / 2 + 40);
         p.text("★", p.width / 2 - 130, p.height / 2 + 50);
         p.textSize(60); // restaurar tamaño para el siguiente frame

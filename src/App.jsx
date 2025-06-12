@@ -12,7 +12,7 @@ function App() {
             fontFamily: "monospace",
           }}
         >
-          Te amo
+          XD
         </h1>
         <SuZzy />
       </div>
