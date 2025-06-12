@@ -30,17 +30,15 @@ const SuZzy = () => {
       };
 
       p.draw = () => {
-        p.clear(); // Limpia el canvas con transparencia
+        p.clear();
+        if (!font) return; // Solo dibuja si la fuente está lista
+
         let emoColor =
           p.frameCount % 30 < 15 ? p.color(255, 0, 255) : p.color(255);
         p.fill(emoColor);
-
-        if (font) {
-          p.textFont(font);
-        }
+        p.textFont(font);
 
         p.text("Te amo", p.width / 2, p.height / 6);
-
         p.text("SuZzy", p.width / 2, p.height / 2);
 
         // Emo decoraciones
